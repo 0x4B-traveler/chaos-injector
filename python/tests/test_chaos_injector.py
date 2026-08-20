@@ -5,6 +5,7 @@ from __future__ import annotations
 import dataclasses
 import json
 import socket
+import sys
 import time
 
 import pytest
@@ -124,6 +125,7 @@ def test_port_fault_inject_and_rollback():
     fault.recover()
 
 
+@pytest.mark.skipif(sys.platform.startswith("linux"), reason="platform gate only rejects non-Linux")
 def test_process_fault_rejected_on_non_linux():
     fault = ProcessFault(pattern="sleep")
     try:
@@ -241,6 +243,7 @@ def test_cli_list_faults(capsys):
     )
 
 
+@pytest.mark.skipif(sys.platform.startswith("linux"), reason="platform gate only rejects non-Linux")
 def test_cli_network_rejected_on_non_linux():
     fault = NetworkFault(interface="eth0", delay_ms=200)
     try:
