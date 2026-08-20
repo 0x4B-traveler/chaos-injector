@@ -1,0 +1,43 @@
+{
+  "experiment": "port",
+  "fault": "port(port=8080)",
+  "duration": "4s",
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T04:40:22.427308518Z",
+      "phase": "start",
+      "detail": "fault=port(port=8080) duration=4s"
+    },
+    {
+      "at": "2026-08-20T04:40:22.427315129Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T04:40:22.427563119Z",
+      "phase": "inject",
+      "detail": "fault=port active"
+    },
+    {
+      "at": "2026-08-20T04:40:22.42757883Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 4s"
+    },
+    {
+      "at": "2026-08-20T04:40:26.428659206Z",
+      "phase": "recover",
+      "detail": "fault=port rolled back"
+    },
+    {
+      "at": "2026-08-20T04:40:26.428687012Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T04:40:26.439875071Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "experiment": "network",
+  "fault": "network(interface=eth0, delay_ms=100, loss_pct=0.0)",
+  "duration": "20s",
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T03:35:25.753201112Z",
+      "phase": "start",
+      "detail": "fault=network(interface=eth0, delay_ms=100, loss_pct=0.0) duration=20s"
+    },
+    {
+      "at": "2026-08-20T03:35:25.75322178Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T03:35:25.753895552Z",
+      "phase": "inject",
+      "detail": "fault=network active"
+    },
+    {
+      "at": "2026-08-20T03:35:25.753904627Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 20s"
+    },
+    {
+      "at": "2026-08-20T03:35:45.755128565Z",
+      "phase": "recover",
+      "detail": "fault=network rolled back"
+    },
+    {
+      "at": "2026-08-20T03:35:45.755134614Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T03:35:45.765294932Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}

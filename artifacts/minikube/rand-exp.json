@@ -1,0 +1,43 @@
+{
+  "experiment": "random",
+  "fault": "cpu(load_percent=57, cores=3)",
+  "duration": "8s",
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T03:37:16.793101142Z",
+      "phase": "start",
+      "detail": "fault=cpu(load_percent=57, cores=3) duration=8s"
+    },
+    {
+      "at": "2026-08-20T03:37:16.793107491Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T03:37:16.793124511Z",
+      "phase": "inject",
+      "detail": "fault=cpu active"
+    },
+    {
+      "at": "2026-08-20T03:37:16.793130011Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 8s"
+    },
+    {
+      "at": "2026-08-20T03:37:24.793183364Z",
+      "phase": "recover",
+      "detail": "fault=cpu rolled back"
+    },
+    {
+      "at": "2026-08-20T03:37:24.793270869Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T03:37:24.807427676Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}

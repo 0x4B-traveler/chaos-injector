@@ -1,0 +1,43 @@
+{
+  "experiment": "mem",
+  "fault": "mem(size_mb=64)",
+  "duration": "4s",
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T04:40:18.052450238Z",
+      "phase": "start",
+      "detail": "fault=mem(size_mb=64) duration=4s"
+    },
+    {
+      "at": "2026-08-20T04:40:18.052515395Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T04:40:18.05264299Z",
+      "phase": "inject",
+      "detail": "fault=mem active"
+    },
+    {
+      "at": "2026-08-20T04:40:18.052648132Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 4s"
+    },
+    {
+      "at": "2026-08-20T04:40:22.053437169Z",
+      "phase": "recover",
+      "detail": "fault=mem rolled back"
+    },
+    {
+      "at": "2026-08-20T04:40:22.053461488Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T04:40:22.075713761Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}

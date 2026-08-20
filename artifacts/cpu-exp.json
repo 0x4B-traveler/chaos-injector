@@ -1,0 +1,33 @@
+{
+  "experiment": "cpu-cpu",
+  "fault": "cpu(load_percent=60, cores=1, _proc=None, _stop=<threading.Event at 0x1bf91039fd0: unset>, _burners=[])",
+  "duration_sec": 5.0,
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T03:11:19.814+00:00",
+      "phase": "start",
+      "detail": "fault=cpu(load_percent=60, cores=1, _proc=None, _stop=<threading.Event at 0x1bf91039fd0: unset>, _burners=[]) duration=5.0s"
+    },
+    {
+      "at": "2026-08-20T03:11:19.817+00:00",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T03:11:19.822+00:00",
+      "phase": "inject",
+      "detail": "fault=cpu active"
+    },
+    {
+      "at": "2026-08-20T03:11:19.822+00:00",
+      "phase": "armed",
+      "detail": "auto-recovery in 5.0s"
+    },
+    {
+      "at": "2026-08-20T03:11:24.945+00:00",
+      "phase": "recover",
+      "detail": "fault=cpu rolled back"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "experiment": "k8s-pod-kill",
+  "fault": "pod-kill(namespace=default pod=\"\" selector=\"app=chaos-demo\" count=1 wait-ready=1m30s)",
+  "duration": "1s",
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T04:39:12.0978838Z",
+      "phase": "start",
+      "detail": "fault=pod-kill(namespace=default pod=\"\" selector=\"app=chaos-demo\" count=1 wait-ready=1m30s) duration=1s"
+    },
+    {
+      "at": "2026-08-20T04:39:12.1503337Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T04:39:14.5623185Z",
+      "phase": "inject",
+      "detail": "fault=pod-kill active"
+    },
+    {
+      "at": "2026-08-20T04:39:14.5623185Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 1s"
+    },
+    {
+      "at": "2026-08-20T04:39:15.5625896Z",
+      "phase": "recover",
+      "detail": "fault=pod-kill rolled back"
+    },
+    {
+      "at": "2026-08-20T04:39:15.5625896Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T04:39:15.568647Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}

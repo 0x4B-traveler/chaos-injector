@@ -1,0 +1,69 @@
+{
+  "experiment": "mysql",
+  "fault": "mysql(mode=lock host=127.0.0.1 port=3306 user=root database=app connections=20 table=orders)",
+  "duration": "30s",
+  "recovered": true,
+  "snapshot": {
+    "before": {
+      "ts": "2026-08-20T14:35:48.735Z",
+      "hostname": "mysql-chaos",
+      "platform": "linux",
+      "cpu_count": 2,
+      "loadavg": [
+        0.02,
+        0.05,
+        0.01
+      ],
+      "mem_available_mb": 3468
+    },
+    "after": {
+      "ts": "2026-08-20T14:36:18.754Z",
+      "hostname": "mysql-chaos",
+      "platform": "linux",
+      "cpu_count": 2,
+      "loadavg": [
+        0.01,
+        0.04,
+        0.01
+      ],
+      "mem_available_mb": 3465
+    }
+  },
+  "events": [
+    {
+      "at": "2026-08-20T14:35:48.735139201Z",
+      "phase": "start",
+      "detail": "fault=mysql(mode=lock host=127.0.0.1 port=3306 user=root database=app connections=20 table=orders) duration=30s"
+    },
+    {
+      "at": "2026-08-20T14:35:48.744615743Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T14:35:48.754176345Z",
+      "phase": "inject",
+      "detail": "fault=mysql active"
+    },
+    {
+      "at": "2026-08-20T14:35:48.754183709Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 30s"
+    },
+    {
+      "at": "2026-08-20T14:36:18.75470061Z",
+      "phase": "recover",
+      "detail": "fault=mysql rolled back"
+    },
+    {
+      "at": "2026-08-20T14:36:18.754708881Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T14:36:18.790840345Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}

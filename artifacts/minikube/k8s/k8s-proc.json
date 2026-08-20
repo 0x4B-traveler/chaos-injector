@@ -1,0 +1,43 @@
+{
+  "experiment": "process",
+  "fault": "process(pattern=\"9999\")",
+  "duration": "2s",
+  "recovered": true,
+  "events": [
+    {
+      "at": "2026-08-20T04:40:40.619017223Z",
+      "phase": "start",
+      "detail": "fault=process(pattern=\"9999\") duration=2s"
+    },
+    {
+      "at": "2026-08-20T04:40:40.61926637Z",
+      "phase": "check",
+      "detail": "preconditions ok"
+    },
+    {
+      "at": "2026-08-20T04:40:40.619321463Z",
+      "phase": "inject",
+      "detail": "fault=process active"
+    },
+    {
+      "at": "2026-08-20T04:40:40.619327989Z",
+      "phase": "armed",
+      "detail": "auto-recovery in 2s"
+    },
+    {
+      "at": "2026-08-20T04:40:42.619583637Z",
+      "phase": "recover",
+      "detail": "fault=process rolled back"
+    },
+    {
+      "at": "2026-08-20T04:40:42.619608817Z",
+      "phase": "auto",
+      "detail": "auto-recovery fired by timer"
+    },
+    {
+      "at": "2026-08-20T04:40:42.625743981Z",
+      "phase": "done",
+      "detail": "experiment finished"
+    }
+  ]
+}
