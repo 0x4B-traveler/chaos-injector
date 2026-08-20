@@ -86,10 +86,11 @@ func (e *Experiment) Recover() {
 		return
 	}
 	e.recovered = true
+	timer := e.timer
 	e.mu.Unlock()
 
-	if e.timer != nil {
-		e.timer.Stop()
+	if timer != nil {
+		timer.Stop()
 	}
 	_ = e.Fault.Recover()
 	e.Snapshots.After = fault.Capture()
@@ -109,12 +110,14 @@ func (e *Experiment) Run() error {
 	deadline := time.Now().Add(e.Duration + 2*time.Second) // safety bound
 	for {
 		e.mu.Lock()
-		done := e.recovered
+		// Both "recover" and "auto" must be on the timeline before Run
+		// returns; autoRecover's goroutine records them after Recover().
+		done := e.recovered && containsPhase(e.timeline, "recover") && containsPhase(e.timeline, "auto")
 		e.mu.Unlock()
 		if done || time.Now().After(deadline) {
 			break
 		}
-		time.Sleep(50 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 	}
 	e.Recover()
 	e.record("done", "experiment finished")
@@ -161,12 +164,24 @@ func (e *Experiment) WriteTimeline(path string) error {
 }
 
 func (e *Experiment) record(phase, detail string) {
+	ev := Event{At: time.Now().UTC(), Phase: phase, Detail: detail}
 	e.mu.Lock()
-	e.timeline = append(e.timeline, Event{At: time.Now().UTC(), Phase: phase, Detail: detail})
+	e.timeline = append(e.timeline, ev)
 	e.mu.Unlock()
 	if e.OnEvent != nil {
-		e.OnEvent(e.timeline[len(e.timeline)-1])
+		e.OnEvent(ev)
 	}
+}
+
+// containsPhase reports whether phase appears in timeline; the caller must
+// hold e.mu.
+func containsPhase(timeline []Event, phase string) bool {
+	for _, ev := range timeline {
+		if ev.Phase == phase {
+			return true
+		}
+	}
+	return false
 }
 
 // seedPtr returns a pointer for JSON output, nil when the seed is unset.
