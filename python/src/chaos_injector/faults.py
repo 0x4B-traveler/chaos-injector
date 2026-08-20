@@ -30,7 +30,7 @@ import subprocess
 import sys
 import threading
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, ClassVar
 
@@ -78,7 +78,7 @@ def snapshot_env() -> dict[str, Any]:
     """
 
     snap: dict[str, Any] = {
-        "ts": datetime.now(UTC).isoformat(timespec="milliseconds"),
+        "ts": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
         "hostname": socket.gethostname(),
         "platform": sys.platform,
         "cpu_count": os.cpu_count(),

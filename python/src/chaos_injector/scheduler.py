@@ -19,9 +19,9 @@ import json
 import threading
 import time
 from collections.abc import Callable
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Self
+from typing import Any
 
 from .faults import BaseFault, FaultError, snapshot_env
 
@@ -29,7 +29,7 @@ EventCallback = Callable[[dict[str, Any]], None]
 
 
 def _utc_now() -> str:
-    return datetime.now(UTC).isoformat(timespec="milliseconds")
+    return datetime.now(timezone.utc).isoformat(timespec="milliseconds")
 
 
 class Experiment:
@@ -103,7 +103,7 @@ class Experiment:
 
     # -- context manager ---------------------------------------------------
 
-    def __enter__(self) -> Self:
+    def __enter__(self):
         return self
 
     def __exit__(self, exc_type, exc, tb) -> None:
